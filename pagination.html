@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination with Dynamic Show/Hide</title>
+    <style>
+        .pagination {
+            display: none; /* Hide pagination container by default */
+        }
+        ul.list {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        .list-container > ul > li{
+            flex: 0 20%;
+            font-size: 18px;
+            line-height: 24px;
+            background-color: aquamarine;
+            margin: 5px 5px 8px 20px;
+            text-align: center;
+            padding: 8px 0;
+        }
+        .page-numbers {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .pagination{
+            margin-top: 30px;
+        }
+        .pagination ul{
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .pagination ul li{
+            list-style: none;
+        }
+        .pagination ul li a{
+            text-decoration: none;
+        }
+        .page-numbers li > a{
+            color: #fff;
+            background-color: #000;
+            padding: 5px 10px;
+            border-radius: 50px;
+            border: 2px solid #aa2828;
+            font-size: 16px;
+        }
+        .page-numbers li {
+            display: inline;
+            margin: 0 8px;
+            list-style: none;
+        }
+        li.next-page,li.prev-page {
+            margin: 0 15px;
+        }
+        .current-page a{
+          color: #000 !important ;
+          background-color: grey !important;
+          font-weight: 600;
+        }
+        .page-center {
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        body{
+            padding-top: 70px;
+        }
+        .current-page a, .current-button a {
+            background-color: #aa2828;
+            color: #fff;
+            border: 2px solid #aa2828;
+        }
+    </style>
+</head>
+<body>
+<div class="page-center">
+    <div class="list-container">
+        <ul class="list">
+            <!-- Your list items here --><li>Item 2</li>
+<li>Item 3</li>
+<li>Item 4</li>
+<li>Item 5</li>
+<li>Item 6</li>
+<li>Item 7</li>
+<li>Item 8</li>
+<li>Item 9</li>
+<li>Item 10</li>
+<li>Item 11</li>
+<li>Item 12</li>
+<li>Item 13</li>
+<li>Item 14</li>
+<li>Item 15</li>
+<li>Item 16</li>
+<li>Item 17</li>
+<li>Item 18</li>
+<li>Item 19</li>
+<li>Item 20</li>
+<li>Item 21</li>
+<li>Item 22</li>
+<li>Item 23</li>
+<li>Item 24</li>
+<li>Item 25</li>
+<li>Item 26</li>
+<li>Item 27</li>
+
+<li>Item 12</li>
+<li>Item 13</li>
+<li>Item 14</li>
+<li>Item 15</li>
+<li>Item 16</li>
+<li>Item 17</li>
+<li>Item 18</li>
+<li>Item 19</li>
+<li>Item 20</li>
+<li>Item 21</li>
+<li>Item 22</li>
+<li>Item 23</li>
+<li>Item 24</li>
+<li>Item 2</li>
+<li>Item 3</li>
+<li>Item 4</li>
+<li>Item 5</li>
+<li>Item 6</li>
+<li>Item 7</li>
+<li>Item 8</li>
+<li>Item 9</li>
+<li>Item 10</li>
+<li>Item 11</li>
+<li>Item 12</li>
+<li>Item 13</li>
+<li>Item 14</li>
+<li>Item 15</li>
+<li>Item 16</li>
+<li>Item 17</li>
+<li>Item 18</li>
+<li>Item 19</li>
+<li>Item 20</li>
+<li>Item 21</li>
+<li>Item 22</li>
+<li>Item 23</li>
+<li>Item 24</li>
+<li>Item 25</li>
+<li>Item 26</li>
+<li>Item 27</li>
+
+<li>Item 12</li><li>Item 2</li>
+<li>Item 3</li>
+<li>Item 4</li>
+<li>Item 5</li>
+<li>Item 6</li>
+<li>Item 7</li>
+<li>Item 8</li>
+<li>Item 9</li>
+<li>Item 10</li>
+<li>Item 11</li>
+<li>Item 12</li>
+<li>Item 13</li>
+<li>Item 14</li>
+<li>Item 15</li>
+<li>Item 16</li>
+<li>Item 17</li>
+<li>Item 18</li>
+<li>Item 19</li>
+<li>Item 20</li>
+<li>Item 21</li>
+<li>Item 22</li>
+<li>Item 23</li>
+<li>Item 24</li>
+<li>Item 25</li>
+<li>Item 26</li>
+<li>Item 27</li>
+
+<li>Item 12</li>
+<li>Item 13</li>
+<li>Item 14</li>
+<li>Item 15</li>
+<li>Item 16</li>
+<li>Item 17</li>
+<li>Item 18</li>
+<li>Item 19</li>
+<li>Item 20</li>
+<li>Item 21</li>
+<li>Item 22</li>
+<li>Item 23</li>
+<li>Item 24</li>
+<li>Item 2</li>
+<li>Item 3</li>
+<li>Item 4</li>
+<li>Item 5</li>
+<li>Item 6</li>
+<li>Item 7</li>
+<li>Item 8</li>
+<li>Item 9</li>
+<li>Item 10</li>
+<li>Item 11</li>
+<li>Item 12</li>
+<li>Item 13</li>
+<li>Item 14</li>
+<li>Item 15</li>
+<li>Item 16</li>
+<li>Item 17</li>
+<li>Item 18</li>
+<li>Item 19</li>
+<li>Item 20</li>
+<li>Item 21</li>
+<li>Item 22</li>
+<li>Item 23</li>
+<li>Item 24</li>
+<li>Item 25</li>
+<li>Item 26</li>
+<li>Item 27</li>
+
+<li>Item 12</li>
+            <!-- ... (items 1 to 35) ... -->
+        </ul>
+        <div class="pagination">
+            <ul>
+                <li class="prev-page"><a href="#">Previous</a></li>
+                <ul class="page-numbers"></ul> <!-- Page numbers will be added here dynamically -->
+                <li class="next-page"><a href="#">Next</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Get the list and pagination elements
+    const list = document.querySelector('.list');
+    const pagination = document.querySelector('.pagination');
+    const nextButton = document.querySelector('.next-page a');
+    const prevButton = document.querySelector('.prev-page a');
+    const pageNumbersContainer = document.querySelector('.page-numbers');
+
+    // Calculate the number of pages based on 35 items per page
+    const itemsPerPage = 35;
+
+    // Function to display items for the current page
+    function displayPage(page) {
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const items = Array.from(list.children);
+
+        items.forEach((item, index) => {
+            if (index >= start && index < end) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // Function to show the next page
+    function showNextPage() {
+        currentPage++;
+        displayPage(currentPage);
+        updateButtons();
+        updatePageNumberStyles();
+    }
+
+    // Function to show the previous page
+    function showPreviousPage() {
+        currentPage--;
+        displayPage(currentPage);
+        updateButtons();
+        updatePageNumberStyles();
+    }
+
+    // Initialize page and buttons
+    let currentPage = 1;
+    displayPage(currentPage);
+    updateButtons();
+
+    // Function to update the state of the Previous and Next buttons
+    function updateButtons() {
+        if (currentPage === 1) {
+            prevButton.classList.remove('current-button');
+            prevButton.style.display = 'none';
+        } else {
+            prevButton.classList.add('current-button');
+            prevButton.style.display = 'block';
+        }
+
+        if (currentPage === Math.ceil(list.childElementCount / itemsPerPage)) {
+            nextButton.classList.remove('current-button');
+            nextButton.style.display = 'none';
+        } else {
+            nextButton.classList.add('current-button');
+            nextButton.style.display = 'block';
+        }
+    }
+
+    // Function to generate page numbers
+    function generatePageNumbers() {
+        const totalItems = list.childElementCount;
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        pageNumbersContainer.innerHTML = '';
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageNumberElement = document.createElement('li');
+            pageNumberElement.innerHTML = `<a href="#">${i}</a>`;
+            pageNumberElement.addEventListener('click', () => {
+                currentPage = i;
+                displayPage(currentPage);
+                updateButtons();
+                updatePageNumberStyles(); // Update the styles of page numbers
+            });
+
+            if (i === currentPage) {
+                pageNumberElement.classList.add('current-page');
+            }
+
+            pageNumbersContainer.appendChild(pageNumberElement);
+        }
+    }
+
+    // Function to update the styles of page numbers
+    function updatePageNumberStyles() {
+        const pageNumbers = pageNumbersContainer.querySelectorAll('li');
+        pageNumbers.forEach((pageNumber) => {
+            pageNumber.classList.remove('current-page');
+            if (pageNumber.innerText === currentPage.toString()) {
+                pageNumber.classList.add('current-page');
+            }
+        });
+    }
+
+    // Check if there are more than 35 items to show pagination
+    if (list.childElementCount > itemsPerPage) {
+        pagination.style.display = 'block'; // Show pagination
+        generatePageNumbers(); // Generate page numbers
+    }
+
+    // Add event listeners to the "Next" and "Previous" buttons
+    nextButton.addEventListener('click', showNextPage);
+    prevButton.addEventListener('click', showPreviousPage);
+
+
+
+</script>
+</body>
+</html>
